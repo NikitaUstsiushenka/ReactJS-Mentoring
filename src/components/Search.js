@@ -18,10 +18,10 @@ export default class Search extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-	  <input value={searchValue} onChange={this.handleChange} />
-	  <button type="submit">
-	    {'Search'}
-	  </button>
+	    <input value={searchValue} onChange={this.handleChange} />
+	    <button type="submit">
+	      {'Search'}
+	    </button>
         </form>
       </div>
     );
