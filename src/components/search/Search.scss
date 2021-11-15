@@ -1,0 +1,32 @@
+.search-container {
+  display: flex;
+}
+
+.input-search {
+  background-color: #232323;
+  border: none;
+  color: #DCDCDC;
+  margin-right: 10px;
+  width: 700px;
+  opacity: .9;
+}
+
+.input-search:hover, .input-search:focus {
+  border: none;
+  color: #DCDCDC;
+  background-color: #232323;
+  outline: none;
+}
+
+.btn-search {
+  border: none;
+  background-color: #f65261;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.btn-search:hover, .btn-search:focus {
+  border: none;
+  background-color: #f65261;
+  outline: none;
+}

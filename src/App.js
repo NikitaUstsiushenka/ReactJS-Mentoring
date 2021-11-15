@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import Counter from './components/Counter';
-import Search from './components/Search';
-import Home from './components/Home';
+import Header from './components/header/Header';
+import MovieList from './components/movie/MovieList';
+import ErrorBoundary from './components/error/ErrorBoundary';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Home />
-        <Counter />
-        <Search />
-      </header>
+      <Header />
+      <ErrorBoundary>
+        <MovieList />
+      </ErrorBoundary>
     </div>
   );
 }
