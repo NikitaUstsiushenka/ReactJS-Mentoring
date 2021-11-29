@@ -1,0 +1,27 @@
+.card {
+  margin-top: 20px;
+  height: 325px;
+  width: 280px;
+  border-color: #232323;
+}
+
+.cardBody {
+  background-color: #232323;
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+  color: #DCDCDC;
+}
+
+.cardSubtitle {
+  display: flex;
+  font-size: 13px;
+}
+
+.releaseDate {
+  background-color: #232323 !important;
+  border: solid 2px #555555;
+  color: #DCDCDC;
+}

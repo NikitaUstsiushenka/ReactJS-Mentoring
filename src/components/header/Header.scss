@@ -1,0 +1,52 @@
+.header {
+  height: 225px;
+  width: 100%;
+}
+
+.background {
+  position: absolute;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 225px;
+  width: 100%;
+  filter: blur(8px);
+}
+
+.blur {
+  filter: blur(100px);
+}
+
+.blur {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search {
+  position: relative;
+  margin-left: 300px;
+  top: 25%;
+}
+
+.btn-add-movie {
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  color: #f65261;
+  background-color: #555555;
+  border: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  opacity: .9;
+}
+
+.btn-add-movie:hover, .btn-add-movie:focus {
+  border: none;
+  color: #f65261;
+  background-color: #555555;
+  outline: none;
+}
+
+.title {
+  color: #DCDCDC;
+  margin-bottom: 30px;
+}
