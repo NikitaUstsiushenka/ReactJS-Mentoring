@@ -12,10 +12,10 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state && this.state.hasError) {
       return (
         <div className="container">
-          <h1>{'Something went wrong. Please reload page.'}</h1>
+          <h4>{'Something went wrong. Please reload page.'}</h4>
         </div>
       );
     } else {
