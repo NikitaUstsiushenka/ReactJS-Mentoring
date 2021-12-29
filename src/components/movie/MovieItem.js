@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Badge,
+  Badge, Button,
   Card,
   CardBody,
   CardImg,
@@ -9,24 +9,50 @@ import {
   CardTitle,
 } from 'reactstrap';
 import './MovieItem.scss';
+import { useDispatch } from 'react-redux';
+import { ModalWindowType } from '../../utils/utils';
 
-const MovieItem = (props) => {
+const MovieItem = ({ movie }) => {
+  const dispatch = useDispatch();
+
+  const handleEditSubmit = () => dispatch({
+    type: 'OPEN_MODAL',
+    payload: {
+      movieId: movie.id,
+      type: ModalWindowType.EDIT_MODAL,
+    }
+  });
+
+  const handleDeleteSubmit = () => dispatch({
+    type: 'OPEN_MODAL',
+    payload: {
+      movieId: movie.id,
+      type: ModalWindowType.DELETE_MODAL
+    }
+  });
+
   return (
     <>
       <Card className="card">
-        <CardImg src={props.image} top/>
-        <CardBody className="cardBody">
-          <CardTitle className="cardTitle" tag="h6">
-            {props.title}
-            <Badge className="releaseDate">
-              {props.releaseDate}
+        <CardImg src={movie.url} top/>
+        <CardBody className="card-body">
+          <CardTitle className="card-title" tag="h6">
+            {movie.title}
+            <Badge className="release-date">
+              {movie.releaseDate.split('-')[0]}
             </Badge>
           </CardTitle>
-          <CardSubtitle
-            className="cardSubtitle mb-2 text-muted"
-          >
-            {props.genre}
+          <CardSubtitle className="card-subtitle mb-2 text-muted">
+            {movie.genre}
           </CardSubtitle>
+          <div className="button-container">
+            <Button className="btn-edit" onClick={handleEditSubmit}>
+              {'Edit'}
+            </Button>
+            <Button className="btn-delete" onClick={handleDeleteSubmit}>
+              {'Delete'}
+            </Button>
+          </div>
         </CardBody>
       </Card>
     </>
@@ -34,10 +60,7 @@ const MovieItem = (props) => {
 };
 
 MovieItem.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
+  movie: PropTypes.object.isRequired,
 };
 
 export default MovieItem;

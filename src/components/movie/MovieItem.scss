@@ -1,27 +1,61 @@
 .card {
-  margin-top: 20px;
+  margin: 20px;
   height: 325px;
   width: 280px;
   border-color: #232323;
 }
 
-.cardBody {
+.card-body {
   background-color: #232323;
 }
 
-.cardTitle {
+.card-title {
   display: flex;
   justify-content: space-between;
   color: #DCDCDC;
 }
 
-.cardSubtitle {
+.card-subtitle {
   display: flex;
   font-size: 13px;
 }
 
-.releaseDate {
+.release-date {
   background-color: #232323 !important;
   border: solid 2px #555555;
   color: #DCDCDC;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-edit {
+  border: 1px solid #f65261;
+  background-color: #232323;
+  width: 80px;
+  text-transform: uppercase;
+  color: #f65261;
+}
+
+.btn-edit:hover, .btn-edit:focus {
+  border: 1px solid #f65261;
+  background-color: #232323;
+  outline: none;
+  color: #f65261;
+}
+
+.btn-delete {
+  border: none;
+  background-color: #f65261;
+  width: 80px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+.btn-delete:hover, .btn-delete:focus {
+  border: none;
+  background-color: #f65261;
+  outline: none;
 }
