@@ -14,11 +14,13 @@ import { deleteMovie } from '../../store/action/movies';
 
 const DeleteModalWindow = ({ movieId }) => {
   const dispatch = useDispatch();
-  const showModal = useSelector(state => state.modalWindowStore.showModal);
-  const closeModalWindowAction = closeModalWindowAction();
+  const showModal = useSelector(state => state.modalWindowReducer.showModal);
 
-  const handleClose = () => dispatch(closeModalWindowAction);
-  const handleConfirm = () => dispatch(deleteMovie(movieId));
+  const handleClose = () => dispatch(closeModalWindowAction());
+  const handleConfirm = () => {
+    dispatch(deleteMovie(movieId));
+    dispatch(closeModalWindowAction());
+  };
 
   return (
     <Modal isOpen={showModal} toggle={handleClose}>

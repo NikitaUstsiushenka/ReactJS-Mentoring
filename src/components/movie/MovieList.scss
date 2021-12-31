@@ -1,6 +1,5 @@
 .container {
   background-color: #232323;
-  height: 100vh;
   max-width: 100%;
 }
 
@@ -51,6 +50,6 @@
 }
 
 .movies-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
