@@ -11,39 +11,34 @@ import {
 import './MovieItem.scss';
 import { useDispatch } from 'react-redux';
 import { ModalWindowType } from '../../utils/utils';
+import { openModalWindowAction } from '../../store/action/actionCreators';
 
 const MovieItem = ({ movie }) => {
   const dispatch = useDispatch();
 
-  const handleEditSubmit = () => dispatch({
-    type: 'OPEN_MODAL',
-    payload: {
-      movieId: movie.id,
-      type: ModalWindowType.EDIT_MODAL,
-    }
-  });
+  const handleEditSubmit = () => dispatch(openModalWindowAction({
+    type: ModalWindowType.EDIT_MODAL,
+    movieId: movie.id,
+  }));
 
-  const handleDeleteSubmit = () => dispatch({
-    type: 'OPEN_MODAL',
-    payload: {
-      movieId: movie.id,
-      type: ModalWindowType.DELETE_MODAL
-    }
-  });
+  const handleDeleteSubmit = () => dispatch(openModalWindowAction({
+    type: ModalWindowType.DELETE_MODAL,
+    movieId: movie.id,
+  }));
 
   return (
     <>
       <Card className="card">
-        <CardImg src={movie.url} top/>
+        <CardImg src={movie.poster_path} top className="card-img"/>
         <CardBody className="card-body">
           <CardTitle className="card-title" tag="h6">
             {movie.title}
             <Badge className="release-date">
-              {movie.releaseDate.split('-')[0]}
+              {movie.release_date.split('-')[0]}
             </Badge>
           </CardTitle>
           <CardSubtitle className="card-subtitle mb-2 text-muted">
-            {movie.genre}
+            {movie.genres.join(' & ')}
           </CardSubtitle>
           <div className="button-container">
             <Button className="btn-edit" onClick={handleEditSubmit}>

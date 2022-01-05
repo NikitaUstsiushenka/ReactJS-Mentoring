@@ -8,7 +8,6 @@ const defaultState = {
 export default function modalWindowReducer(state = defaultState, action) {
   switch (action.type) {
     case ActionTypes.OPEN_MODAL:
-      console.error(action.payload);
       return {
         ...state,
         showModal: true,

@@ -1,12 +1,11 @@
-import { addMovieAction, deleteMovieAction, editMovieAction, getMoviesAction } from './actionCreators';
+import { getMoviesAction } from './actionCreators';
+import { stringify } from 'qs';
 
 const getMovies = (params) => {
   return (dispatch) => {
-    fetch(`http://localhost:4000/movies`, {
-      method: 'GET',
-    })
+    fetch(`http://localhost:4000/movies?${stringify(params)}`)
     .then(response => response.json())
-    .then(json => dispatch(getMoviesAction(json.data)));
+    .then(json => dispatch(getMoviesAction(json)));
   };
 };
 
@@ -20,7 +19,7 @@ const addMovie = (movie) => {
       },
     })
     .then(response => response.json())
-    .then(json => dispatch(addMovieAction(json)));
+    .then(() => dispatch(getMovies()));
   };
 };
 
@@ -34,7 +33,7 @@ const editMovie = (movie) => {
       },
     })
     .then(response => response.json())
-    .then(json => dispatch(editMovieAction(json)));
+    .then(() => dispatch(getMovies()));
   };
 };
 
@@ -43,7 +42,7 @@ const deleteMovie = (movieId) => {
     fetch(`http://localhost:4000/movies/${movieId}`, {
       method: 'DELETE'
     })
-    .then(() => dispatch(deleteMovieAction(movieId)));
+    .then(() => dispatch(getMovies()));
   };
 };
 
