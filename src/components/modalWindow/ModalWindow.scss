@@ -13,6 +13,13 @@
   background-color: #232323;
 }
 
+.modal-success-body {
+  width: 600px;
+  background-color: #232323;
+  text-align: center;
+  color: #DCDCDC;
+}
+
 .modal-footer {
   width: 600px;
   background-color: #232323;
@@ -75,10 +82,22 @@
   color: #DCDCDC;
 }
 
+.modal-success-body-text {
+  margin: 25px;
+  font-size: 17px;
+}
+
 .btn-close {
   background-color: #555555 !important;
 }
 
 .btn-close:hover {
   background-color: #555555 !important;
+}
+
+.error {
+  margin-top: 2px;
+  color: #f65261;
+  font-size: 13px;
+  font-weight: lighter;
 }

@@ -1,5 +1,6 @@
-import { getMoviesAction } from './actionCreators';
+import { getMoviesAction, openModalWindowAction } from './actionCreators';
 import { stringify } from 'qs';
+import { DEFAULT_PAGE_SIZE, ModalWindowType } from '../../utils/utils';
 
 const getMovies = (params) => {
   return (dispatch) => {
@@ -18,8 +19,15 @@ const addMovie = (movie) => {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     })
-    .then(response => response.json())
-    .then(() => dispatch(getMovies()));
+    .then(response => {
+      if (response.status === 201) {
+        dispatch(getMovies({ limit: DEFAULT_PAGE_SIZE }));
+        dispatch(openModalWindowAction({
+          type: ModalWindowType.SUCCESS_MODAL,
+          message: 'The movie has been added to database successfully',
+        }));
+      }
+    })
   };
 };
 
@@ -32,8 +40,15 @@ const editMovie = (movie) => {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     })
-    .then(response => response.json())
-    .then(() => dispatch(getMovies()));
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(getMovies({ limit: DEFAULT_PAGE_SIZE }));
+        dispatch(openModalWindowAction({
+          type: ModalWindowType.SUCCESS_MODAL,
+          message: 'The movie has been updated in database successfully',
+        }));
+      }
+    })
   };
 };
 
@@ -42,7 +57,15 @@ const deleteMovie = (movieId) => {
     fetch(`http://localhost:4000/movies/${movieId}`, {
       method: 'DELETE'
     })
-    .then(() => dispatch(getMovies()));
+    .then((response) => {
+      if (response.status === 204) {
+        dispatch(getMovies({ limit: DEFAULT_PAGE_SIZE }));
+        dispatch(openModalWindowAction({
+          type: ModalWindowType.SUCCESS_MODAL,
+          message: 'The movie has been deleted from database successfully',
+        }));
+      }
+    });
   };
 };
 
@@ -50,4 +73,5 @@ export {
   getMovies,
   addMovie,
   deleteMovie,
+  editMovie,
 };

@@ -2,26 +2,29 @@ import React, { useEffect, useState } from 'react';
 import MovieItem from './MovieItem';
 import './MovieList.scss';
 import {
-  Col,
   Input,
+  Label,
   Nav,
   NavItem,
   NavLink, TabContent, TabPane,
 } from 'reactstrap';
-import { Tabs } from '../../utils/utils';
-import { useDispatch } from 'react-redux';
+import { DEFAULT_PAGE_SIZE, SortParams, Tabs } from '../../utils/utils';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from '../../store/action/movies';
 
 const MovieList = ({ movies }) => {
   const dispatch = useDispatch();
-  const [ activeTab, setActiveTab ] = useState(Tabs.ALL);
+  const [activeTab, setActiveTab] = useState(Tabs.ALL);
+  const [sortBy, setSortBy] = useState(SortParams.RELEASE_DATE);
 
   useEffect(() => {
     dispatch(getMovies({
       searchBy: 'genres',
-      filter: activeTab === Tabs.ALL ? '' : activeTab
+      filter: activeTab === Tabs.ALL ? '' : activeTab,
+      sortBy,
+      limit: DEFAULT_PAGE_SIZE,
     }));
-  }, [activeTab]);
+  }, [activeTab, sortBy]);
 
   return (
     <div className="container">
@@ -54,7 +57,30 @@ const MovieList = ({ movies }) => {
       </Nav>
       <TabContent className="tabs-content" activeTab="1">
         <TabPane tabId="1">
-          <h5 className="count-label">{`${movies?.totalAmount} movies found`}</h5>
+          <div className="sort-dropdown-component">
+            <div>
+              <h5 className="count-label">{`${movies?.totalAmount} movies found`}</h5>
+            </div>
+            <div className="sort-dropdown-container">
+              <Label for="sort-dropdown" className="sort-dropdown-label text-muted">
+                {'Sort by'}
+              </Label>
+              <Input
+                id="sort-dropdown"
+                name="sort-dropdown"
+                className="sort-dropdown"
+                type="select"
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option key={SortParams.RELEASE_DATE} value={SortParams.RELEASE_DATE}>
+                  {'RELEASE DATE'}
+                </option>
+                <option key={SortParams.RATING} value={SortParams.RATING}>
+                  {'RATING'}
+                </option>
+              </Input>
+            </div>
+          </div>
           <div className="movies-container">
             {movies.data?.map((movie) => (
               <MovieItem key={movie.id} movie={movie} />
