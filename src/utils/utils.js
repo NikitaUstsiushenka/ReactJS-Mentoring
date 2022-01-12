@@ -11,4 +11,18 @@ export const Tabs = {
   COMEDY: 'Comedy',
   HORROR: 'Horror',
   CRIME: 'Crime',
-}
+};
+
+export const SortParams = {
+  RELEASE_DATE: 'release_date',
+  RATING: 'vote_average',
+};
+
+export const MovieGenres = [
+  'Documentary',
+  'Comedy',
+  'Horror',
+  'Crime',
+];
+
+export const DEFAULT_PAGE_SIZE = 12;

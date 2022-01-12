@@ -34,7 +34,7 @@ const MovieItem = ({ movie }) => {
           <CardTitle className="card-title" tag="h6">
             {movie.title}
             <Badge className="release-date">
-              {movie.release_date.split('-')[0]}
+              {movie.release_date?.split('-')[0]}
             </Badge>
           </CardTitle>
           <CardSubtitle className="card-subtitle mb-2 text-muted">

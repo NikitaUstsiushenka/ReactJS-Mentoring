@@ -1,6 +1,7 @@
 .container {
   background-color: #232323;
   max-width: 100%;
+  flex-grow: 2;
 }
 
 .tabs {
@@ -52,4 +53,28 @@
 .movies-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.sort-dropdown {
+  background-color: #232323;
+  color: #DCDCDC;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 150px;
+}
+
+.sort-dropdown-label {
+  color: #555555;
+  text-transform: uppercase;
+  margin: 10px;
+}
+
+.sort-dropdown-component {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort-dropdown-container {
+  display: flex;
 }

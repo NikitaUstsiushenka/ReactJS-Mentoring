@@ -12,7 +12,8 @@ export default function modalWindowReducer(state = defaultState, action) {
         ...state,
         showModal: true,
         type: action.payload.type,
-        movieId: action.payload.movieId
+        movieId: action.payload.movieId,
+        message: action.payload.message,
       };
     case ActionTypes.CLOSE_MODAL:
       return {...state, showModal: false};

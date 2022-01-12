@@ -6,41 +6,48 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
+  Form,
 } from 'reactstrap';
 import './ModalWindow.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeModalWindowAction } from '../../store/action/actionCreators';
 import { deleteMovie } from '../../store/action/movies';
+import { useFormik } from 'formik';
 
-const DeleteModalWindow = ({ movieId }) => {
+const DeleteModalWindow = ({ showModal, movieId, onClose }) => {
   const dispatch = useDispatch();
-  const showModal = useSelector(state => state.modalWindowReducer.showModal);
 
-  const handleClose = () => dispatch(closeModalWindowAction());
-  const handleConfirm = () => {
-    dispatch(deleteMovie(movieId));
-    dispatch(closeModalWindowAction());
-  };
+  const formik = useFormik({
+    initialValues: {},
+    onSubmit: () => {
+      dispatch(deleteMovie(movieId));
+      dispatch(closeModalWindowAction());
+    },
+  });
 
   return (
-    <Modal isOpen={showModal} toggle={handleClose}>
-      <ModalHeader className="modal-header" toggle={handleClose}>
-        <h2>{'Delete movie'}</h2>
-      </ModalHeader>
-      <ModalBody className="modal-body">
-        <p className="modal-body-text">{'Are you sure you want to delete this movie?'}</p>
-      </ModalBody>
-      <ModalFooter className="modal-footer">
-        <Button className="btn-submit" onClick={handleConfirm}>
-          {'Confirm'}
-        </Button>
-      </ModalFooter>
+    <Modal isOpen={showModal} toggle={onClose}>
+      <Form onSubmit={formik.handleSubmit}>
+        <ModalHeader className="modal-header" toggle={onClose}>
+          <h2>{'Delete movie'}</h2>
+        </ModalHeader>
+        <ModalBody className="modal-body">
+          <p className="modal-body-text">{'Are you sure you want to delete this movie?'}</p>
+        </ModalBody>
+        <ModalFooter className="modal-footer">
+          <Button className="btn-submit" type="submit">
+            {'Confirm'}
+          </Button>
+        </ModalFooter>
+      </Form>
     </Modal>
   );
 };
 
 DeleteModalWindow.propTypes = {
+  showModal: PropTypes.bool.isRequired,
   movieId: PropTypes.number.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default DeleteModalWindow;

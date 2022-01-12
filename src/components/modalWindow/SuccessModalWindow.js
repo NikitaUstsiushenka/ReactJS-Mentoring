@@ -5,25 +5,23 @@ import {
   ModalHeader,
 } from 'reactstrap';
 import './ModalWindow.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeModalWindowAction } from '../../store/action/actionCreators';
+import PropTypes from 'prop-types';
 
-const SuccessModalWindow = () => {
-  const dispatch = useDispatch();
-  const showModal = useSelector(state => state.modalWindowStore.showModal);
-
-  const handleClose = () => dispatch(closeModalWindowAction());
-
+const SuccessModalWindow = ({ showModal, message, onClose }) => {
   return (
-    <Modal isOpen={showModal} toggle={handleClose}>
-      <ModalHeader className="modal-header" toggle={handleClose}>
-        <h2>{'Delete movie'}</h2>
-      </ModalHeader>
-      <ModalBody className="modal-body">
-        <h6 className="modal-body-text">{'CONGRATULATIONS!'}</h6>
+    <Modal isOpen={showModal} toggle={onClose}>
+      <ModalHeader toggle={onClose} />
+      <ModalBody className="modal-success-body">
+        <h2>{'CONGRATULATIONS!'}</h2>
+        <p className="modal-success-body-text">{message}</p>
       </ModalBody>
     </Modal>
   );
 };
+
+SuccessModalWindow.propTypes = {
+  showModal: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+}
 
 export default SuccessModalWindow;
