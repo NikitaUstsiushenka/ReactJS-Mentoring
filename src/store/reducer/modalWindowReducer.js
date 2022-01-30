@@ -2,7 +2,9 @@ import ActionTypes from '../actionTypes';
 
 const defaultState = {
   showModal: false,
-  type: '',
+  type: undefined,
+  movieId: undefined,
+  message: undefined,
 };
 
 export default function modalWindowReducer(state = defaultState, action) {
@@ -16,7 +18,7 @@ export default function modalWindowReducer(state = defaultState, action) {
         message: action.payload.message,
       };
     case ActionTypes.CLOSE_MODAL:
-      return {...state, showModal: false};
+      return defaultState;
     default:
       return state;
   }

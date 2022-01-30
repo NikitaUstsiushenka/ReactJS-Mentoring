@@ -63,7 +63,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
   return (
     <Modal isOpen={showModal} toggle={onClose}>
       <ModalHeader className="modal-header" toggle={onClose}>
-        <h2>{!movieId ? 'Add movie' : 'Edit movie'}</h2>
+        {!movieId ? 'Add movie' : 'Edit movie'}
       </ModalHeader>
       <Form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
         <ModalBody className="modal-body">
@@ -83,7 +83,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.title && formik.errors.title ? (
-                <div className="error">{formik.errors.title}</div>
+                <div id="title-error" className="error">{formik.errors.title}</div>
               ) : null}
             </Col>
             <Col md={4}>
@@ -100,7 +100,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.releaseDate && formik.errors.releaseDate ? (
-                <div className="error">{formik.errors.releaseDate}</div>
+                <div id="release-date-error" className="error">{formik.errors.releaseDate}</div>
               ) : null}
             </Col>
           </Row>
@@ -120,7 +120,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.posterPath && formik.errors.posterPath ? (
-                <div className="error">{formik.errors.posterPath}</div>
+                <div id="poster-path-error" className="error">{formik.errors.posterPath}</div>
               ) : null}
             </Col>
             <Col md={4}>
@@ -138,7 +138,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.rating && formik.errors.rating ? (
-                <div className="error">{formik.errors.rating}</div>
+                <div id="rating-error" className="error">{formik.errors.rating}</div>
               ) : null}
             </Col>
           </Row>
@@ -162,7 +162,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 ))}
               </Input>
               {formik.touched.genre && formik.errors.genre ? (
-                <div className="error">{formik.errors.genre}</div>
+                <div id="genre-error" className="error">{formik.errors.genre}</div>
               ) : null}
             </Col>
             <Col md={4}>
@@ -180,7 +180,7 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.runtime && formik.errors.runtime ? (
-                <div className="error">{formik.errors.runtime}</div>
+                <div id="runtime-error" className="error">{formik.errors.runtime}</div>
               ) : null}
             </Col>
           </Row>
@@ -200,16 +200,24 @@ const AddEditModalWindow = ({ showModal, movieId, onClose }) => {
                 onBlur={formik.handleBlur}
               />
               {formik.touched.overview && formik.errors.overview ? (
-                <div className="error">{formik.errors.overview}</div>
+                <div id="overview-error" className="error">{formik.errors.overview}</div>
               ) : null}
             </Col>
           </Row>
         </ModalBody>
         <ModalFooter className="modal-footer">
-          <Button className="btn-reset" type="reset">
+          <Button
+            id="btn-reset"
+            className="btn-reset"
+            type="reset"
+          >
             {'Reset'}
           </Button>
-          <Button className="btn-submit" type="submit">
+          <Button
+            id="btn-submit"
+            className="btn-submit"
+            type="submit"
+          >
             {'Submit'}
           </Button>
         </ModalFooter>

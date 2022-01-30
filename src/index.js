@@ -2,17 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/index';
-import thunk from 'redux-thunk';
-
-const store = createStore(reducer, applyMiddleware(thunk));
+import store from './store/index';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
+import NotFound from './components/error/NotFound';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<Navigate to="/search" />} />
+          <Route path="/search" element={<App />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

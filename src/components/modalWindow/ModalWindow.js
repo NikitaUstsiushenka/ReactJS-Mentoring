@@ -47,8 +47,6 @@ const ModalWindow = ({ type }) => {
           message={params.message}
         />
       );
-    default:
-      return null;
   }
 };
 

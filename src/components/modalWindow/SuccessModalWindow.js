@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 const SuccessModalWindow = ({ showModal, message, onClose }) => {
   return (
-    <Modal isOpen={showModal} toggle={onClose}>
+    <Modal id="modal-success" isOpen={showModal} toggle={onClose}>
       <ModalHeader toggle={onClose} />
       <ModalBody className="modal-success-body">
         <h2>{'CONGRATULATIONS!'}</h2>
@@ -21,6 +21,7 @@ const SuccessModalWindow = ({ showModal, message, onClose }) => {
 
 SuccessModalWindow.propTypes = {
   showModal: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
 }
 
