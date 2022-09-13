@@ -7,14 +7,14 @@ import { useSelector } from 'react-redux';
 import ModalWindow from './components/modalWindow/ModalWindow';
 
 function App() {
-  const { movieReducer, modalWindowReducer } = useSelector(state => state);
+  const { type } = useSelector(state => state.modalWindowReducer);
 
   return (
     <div className="App">
-      <Header />
       <ErrorBoundary>
-        <MovieList movies={movieReducer.movies} />
-        <ModalWindow type={modalWindowReducer.type} />
+        <Header />
+        <MovieList />
+        {type && <ModalWindow type={type} />}
       </ErrorBoundary>
     </div>
   );

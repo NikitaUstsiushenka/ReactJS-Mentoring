@@ -1,0 +1,61 @@
+.movie-details-container {
+  display: flex;
+  background-color: #232323;
+  padding: 30px;
+  color: #DCDCDC;
+}
+
+.title {
+  color: #DCDCDC;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.genres {
+  font-size: 13px;
+}
+
+.movie-year-runtime {
+  color: #f65261;
+  font-size: 18px;
+  display: flex;
+}
+
+.movie-runtime {
+  padding-left: 37px;
+}
+
+.round-rating {
+  width: 3em;
+  height: 3em;
+  border: 2px solid #DCDCDC;
+  border-radius: 50%;
+  line-height: 2.5em;
+  text-align: center;
+  margin-left: 15px;
+}
+
+.movie-title-rating {
+  display: flex;
+}
+
+.movie-overview {
+  width: 60%;
+}
+
+.movie-image {
+  margin-right: 50px;
+}
+
+.btn-back-to-search {
+  border: none;
+  background-color: #f65261;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.btn-back-to-search:hover, .btn-back-to-search:focus {
+  border: none;
+  background-color: #f65261;
+  outline: none;
+}

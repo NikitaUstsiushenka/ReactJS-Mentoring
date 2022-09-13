@@ -1,0 +1,12 @@
+{
+  "searchMovieTitle": "The Greatest Showman",
+  "countLabelMessage": "1 movie found",
+  "timeout": 1000,
+  "inputTitle": "Test movie",
+  "inputReleaseDate": "1978-01-01",
+  "inputPosterPath": "https://test.com",
+  "inputRating": 7.8,
+  "inputGenre": "Horror",
+  "inputRuntime": 120,
+  "inputOverview": "Test movie description"
+}

@@ -1,0 +1,28 @@
+.not-found-container {
+  background-color: #232323;
+  color: #DCDCDC;
+  height: 100vh;
+  text-align: center;
+}
+
+.error-code {
+  font-size: 200px;
+}
+
+.title-text {
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+.btn-back-to-search {
+  border: none;
+  background-color: #f65261;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.btn-back-to-search:hover, .btn-back-to-search:focus {
+  border: none;
+  background-color: #f65261;
+  outline: none;
+}

@@ -1,8 +1,8 @@
-import { v4 } from 'uuid';
 import ActionTypes from '../actionTypes';
 
 const defaultState = {
-  movies: []
+  movies: [],
+  showMovieDetails: false,
 };
 
 export default function movieReducer(state = defaultState , action) {
@@ -15,14 +15,9 @@ export default function movieReducer(state = defaultState , action) {
       return state;
     case ActionTypes.GET_MOVIES:
       return {...state, movies: action.payload};
+    case ActionTypes.OPEN_MOVIE_DETAILS:
+      return {...state, showMovieDetails: true};
     default:
       return state;
   }
 }
-
-export const addMovie = (movie) => {
-  return {
-    type: ActionTypes.ADD_MOVIE,
-    payload: movie,
-  };
-};

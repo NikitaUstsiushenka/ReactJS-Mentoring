@@ -26,3 +26,5 @@ export const MovieGenres = [
 ];
 
 export const DEFAULT_PAGE_SIZE = 12;
+
+export const scrollTop = () => window.scrollTo(0, 0);

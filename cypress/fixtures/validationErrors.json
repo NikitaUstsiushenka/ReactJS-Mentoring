@@ -1,0 +1,9 @@
+{
+  "titleError": "Movie title is required",
+  "releaseDateError": "Movie release date is required",
+  "posterPathError": "Movie url is required",
+  "ratingError": "Movie rating is required",
+  "genreError": "Movie genre is required",
+  "runtimeError": "Movie runtime is required",
+  "overviewError": "Movie overview is required"
+}

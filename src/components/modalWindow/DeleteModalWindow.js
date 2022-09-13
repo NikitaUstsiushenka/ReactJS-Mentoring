@@ -35,7 +35,11 @@ const DeleteModalWindow = ({ showModal, movieId, onClose }) => {
           <p className="modal-body-text">{'Are you sure you want to delete this movie?'}</p>
         </ModalBody>
         <ModalFooter className="modal-footer">
-          <Button className="btn-submit" type="submit">
+          <Button
+            id="btn-submit"
+            className="btn-submit"
+            type="submit"
+          >
             {'Confirm'}
           </Button>
         </ModalFooter>
